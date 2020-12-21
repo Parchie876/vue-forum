@@ -3,7 +3,7 @@
     <div class="thread">
       <div>
         <p>
-          <a href="#">{{ thread.title }}</a>
+          <router-link :to="{name: 'ThreadShow', params: {id: thread['.key']}}">{{ thread.title }}</router-link>
         </p>
         <p class="text-faded text-xsmall">
           By <a href="#">user.name</a>, {{ thread.publishedAt }}.
@@ -40,10 +40,10 @@ export default {
   },
   computed: {
     repliedCount () {
-     return Object.keys(this.thread.posts).length - 1
+      return Object.keys(this.thread.posts).length - 1
     },
     user () {
-     return sourceData.users[this.thread.userId]
+      return sourceData.users[this.thread.userId]
     }
   }
 }

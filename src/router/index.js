@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import HomePage from '@/views/HomePage'
 // import ThreadShow from '@/components/ThreadShow'
 
 Vue.use(Router)
@@ -9,8 +9,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: HelloWorld
+      name: 'HomePage',
+      component: HomePage
     },
     {
       path: '/thread/:id',
@@ -18,8 +18,18 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (thread.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "threadShow" */ '@/components/ThreadShow'),
+      component: () => import(/* webpackChunkName: "threadShow" */ '@/views/ThreadShowPage'),
       props: true
+    },
+    {
+      path: '*',
+      name: 'NotFound',
+      // route level code-splitting
+      // this generates a separate chunk (thread.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "threadShow" */ '@/views/NotFound')
+      // redirect: {name: 'HomePage'}
     }
-  ]
+  ],
+  mode: 'history'
 })

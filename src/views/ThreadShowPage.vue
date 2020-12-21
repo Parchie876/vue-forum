@@ -36,7 +36,7 @@
 <script>
 import sourceData from '@/data'
 export default {
-  name: 'ThreadShow',
+  name: 'ThreadShowPage',
   props: {
     id: {
       required: true,
