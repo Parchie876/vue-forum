@@ -18,19 +18,15 @@
           {{ post.text }}
         </div>
       </div>
-
-      <div 
-        class="post-date text-faded"
-        :title="post.publishedAt | readableDate"
+      <div class="post-date text-faded"
       >
-        {{ post.publishedAt | dateDifference}}
+      <AppDate :timestamp="post.publishedAt"/>
       </div>
     </div>
   </div>
 </template>
 <script>
 import sourceData from '@/data'
-import moment from 'moment'
 export default {
   props: {
     post: {
@@ -44,14 +40,6 @@ export default {
     },
     userPostsCount () {
       return Object.keys(this.user.posts).length
-    }
-  },
-  filters: {
-    readableDate (date) {
-      return moment.unix(date).format('MMMM Do YYYY, h:mm:ss a')
-    },
-    dateDifference (date) {
-      return moment.unix(date).fromNow()
     }
   }
 
