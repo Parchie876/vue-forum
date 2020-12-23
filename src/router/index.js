@@ -22,6 +22,15 @@ export default new Router({
       props: true
     },
     {
+      path: '/forum/:id',
+      name: 'Forum',
+      // route level code-splitting
+      // this generates a separate chunk (forum.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "forum" */ '@/views/ForumPage'),
+      props: true
+    },
+    {
       path: '*',
       name: 'NotFound',
       // route level code-splitting
