@@ -2,6 +2,7 @@
   <div class="forum-wrapper">
     <div>
       <div class="col-full push-top">
+          <!-- TODO Implement breadcrumbs feature  -->
         <!-- <ul class="breadcrumbs">
           <li>
             <a href="/index.html"><i class="fa fa-home fa-btn"></i>Home</a>

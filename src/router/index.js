@@ -31,6 +31,15 @@ export default new Router({
       props: true
     },
     {
+      path: '/category/:id',
+      name: 'Category',
+      // route level code-splitting
+      // this generates a separate chunk (category.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "category" */ '@/views/CategoryPage'),
+      props: true
+    },
+    {
       path: '*',
       name: 'NotFound',
       // route level code-splitting
