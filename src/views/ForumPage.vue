@@ -15,6 +15,7 @@
             <h1>{{forum.name}}</h1>
             <p class="text-lead">{{forum.description}}</p>
           </div>
+          <!-- TODO New Thread Link -->
           <a href="new-thread.html" class="btn-green btn-small"
             >Start a thread</a
           >
