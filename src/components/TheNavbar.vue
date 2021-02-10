@@ -19,11 +19,11 @@
             <a href="#">
               <img
                 class="avatar-small"
-                src="https://pbs.twimg.com/profile_images/1188775562657091594/5mgkg44t_400x400.jpg"
+                :src="user.avatar"
                 alt=""
               />
               <span>
-                Alex Kyriakidis
+              {{user.name}}
                 <img
                   class="icon-profile"
                   src="../assets/img/arrow-profile.svg"
@@ -72,7 +72,14 @@
   </div>
 </template>
 <script>
-export default {}
+import {mapGetters} from 'vuex'
+export default {
+  computed: {
+    ...mapGetters({
+      'user': 'authUser'
+    })
+  }
+}
 </script>
 <style  scoped>
 </style>
