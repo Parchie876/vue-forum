@@ -33,9 +33,7 @@ export default {
     save () {
       const post = {
         text: this.newPostText,
-        publishedAt: Math.floor(Date.now() / 1000),
-        threadId: this.threadId,
-        userId: 'FsCDAk9w8NeXEceLV87arpsXjnQ2'
+        threadId: this.threadId
       }
       this.newPostText = ''
 
