@@ -34,28 +34,26 @@
 </template>
 <script>
 export default {
-    props: {
-        forum: {
-            type: Object,
-            required: true
-        }
-    },
-
-    data () {
-        return {
-        title: '',
-        text: ''
-        }
-    },
-
-    methods: {
-        save () {
-            this.$store.dispatch('createThread', {
-                forumId: this.forum['.key'],
-                title: this.title,
-                text: this.text
-            })
-        }
+  props: {
+    forum: {
+      type: Object,
+      required: true
     }
+  },
+  data () {
+    return {
+      title: '',
+      text: ''
+    }
+  },
+  methods: {
+    save () {
+      this.$store.dispatch('createThread', {
+        forumId: this.forum['.key'],
+        title: this.title,
+        text: this.text
+      })
+    }
+  }
 }
 </script>

@@ -16,7 +16,7 @@ export default new Vuex.Store({
 
   actions: {
     createPost ({commit, state}, post) {
-      const postId = 'newPost' + Math.random()
+      const postId = 'greatPost' + Math.random()
       post['.key'] = postId
       post.userId = state.authId
       post.publishedAt = Math.floor(Date.now() / 1000)
@@ -27,7 +27,7 @@ export default new Vuex.Store({
     },
 
     createThread ({state, commit, dispatch}, {text, title, forumId}) {
-      const threadId = 'newThreadId' + Math.random()
+      const threadId = 'greatThread' + Math.random()
       const userId = state.authId
       const publishedAt = Math.floor(Date.now() / 1000)
       const thread = {
@@ -39,8 +39,8 @@ export default new Vuex.Store({
       //  TODO Add slug
       //  TODO Add posts
         '.key': threadId,
-        forumId,
         title,
+        forumId,
         publishedAt,
         userId
       }
@@ -64,38 +64,39 @@ export default new Vuex.Store({
     setUser (state, { user, userId }) {
       Vue.set(state.users, userId, user)
     },
+
     setThread (state, { thread, threadId }) {
       Vue.set(state.threads, threadId, thread)
     },
 
     appendPostToThread (state, { threadId, postId }) {
       const thread = state.threads[threadId]
-      if (!thread.post) {
-        Vue.set(thread, 'post', {})
+      if (!thread.posts) {
+        Vue.set(thread, 'posts', {})
       }
       Vue.set(thread.posts, postId, postId)
     },
 
     appendPostToUser (state, { postId, userId }) {
       const user = state.users[userId]
-      if (!user.post) {
-        Vue.set(user, 'post', {})
+      if (!user.posts) {
+        Vue.set(user, 'posts', {})
       }
       Vue.set(user.posts, postId, postId)
     },
 
     appendThreadToForum (state, {forumId, threadId}) {
       const forum = state.forums[forumId]
-      if (!forum.post) {
-        Vue.set(forum, 'post', {})
+      if (!forum.threads) {
+        Vue.set(forum, 'threads', {})
       }
       Vue.set(forum.threads, threadId, threadId)
     },
 
     appendThreadToUser (state, {userId, threadId}) {
       const user = state.users[userId]
-      if (!user.post) {
-        Vue.set(user, 'post', {})
+      if (!user.threads) {
+        Vue.set(user, 'threads', {})
       }
       Vue.set(user.threads, threadId, threadId)
     }

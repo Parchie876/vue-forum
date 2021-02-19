@@ -8,7 +8,7 @@
           cols="30"
           rows="10"
           class="form-input"
-          v-model="newPostText"
+          v-model="text"
         ></textarea>
       </div>
       <div class="form-actions">
@@ -26,16 +26,16 @@ export default {
   },
   data () {
     return {
-      newPostText: ''
+      text: ''
     }
   },
   methods: {
     save () {
       const post = {
-        text: this.newPostText,
+        text: this.text,
         threadId: this.threadId
       }
-      this.newPostText = ''
+      this.text = ''
 
       this.$emit('save-post', {post})
       this.$store.dispatch('createPost', post)

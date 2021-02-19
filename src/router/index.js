@@ -13,6 +13,15 @@ export default new Router({
       component: HomePage
     },
     {
+      path: '/thread/create',
+      name: 'CreateThread',
+      // route level code-splitting
+      // this generates a separate chunk (createThread.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "createThread" */ '@/views/CreateThreadPage'),
+      props: true
+    },
+    {
       path: '/thread/:id',
       name: 'ThreadShow',
       // route level code-splitting

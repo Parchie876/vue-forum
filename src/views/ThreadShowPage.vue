@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="col-large push-top">
       <h1>{{ thread.title }}</h1>
           <p>By <a href="#" class="link-unstyled">Robin</a>, <AppDate :timestamp="thread.publishedAt"/>.
@@ -13,7 +12,6 @@
         :threadId ="id"
       />
     </div>
-  </div>
 </template>
 <script>
 
