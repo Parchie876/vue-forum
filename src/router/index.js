@@ -13,7 +13,7 @@ export default new Router({
       component: HomePage
     },
     {
-      path: '/thread/create',
+      path: '/thread/create/:forumId',
       name: 'CreateThread',
       // route level code-splitting
       // this generates a separate chunk (createThread.[hash].js) for this route

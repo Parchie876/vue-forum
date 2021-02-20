@@ -35,8 +35,8 @@
 <script>
 export default {
   props: {
-    forum: {
-      type: Object,
+    forumId: {
+      type: String,
       required: true
     }
   },
@@ -46,6 +46,13 @@ export default {
       text: ''
     }
   },
+
+  computed: {
+    forum () {
+      return this.$store.state.forums[this.forumId]
+    }
+  },
+
   methods: {
     save () {
       this.$store.dispatch('createThread', {

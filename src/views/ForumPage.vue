@@ -18,7 +18,7 @@
           </div>
           <!-- TODO New Thread Link -->
           <router-link 
-            :to="{name: 'CreateThread', params: {forum: this.forum}}" 
+            :to="{name: 'CreateThread', params: {forumId: this.forum['.key']}}" 
             class="btn-green btn-small"
             
             >Start a thread</router-link>
