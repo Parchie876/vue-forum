@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="thread-list">
       <h2 class="list-title">Threads</h2>
       <ThreadListItem 
@@ -7,7 +6,6 @@
       :thread="thread"
       :key="thread['.key']"/>
     </div>
-  </div>
 </template>
 <script>
 import ThreadListItem from './ThreadListItem.vue'

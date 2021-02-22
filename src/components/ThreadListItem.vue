@@ -1,5 +1,4 @@
 <template>
-  <div >
     <div class="thread">
       <div>
         <p>
@@ -27,7 +26,6 @@
         </div> -->
       </div>
     </div>
-  </div>
 </template>
 <script>
 import {countObjectProperties} from '@/utils'

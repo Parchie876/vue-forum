@@ -1,5 +1,4 @@
 <template>
-    <div>
       <div class="forum-listing">
         <div class="forum-details">
           <router-link 
@@ -25,7 +24,6 @@
           </div> -->
         </div>
       </div>        
-    </div>
 </template>
 <script>
 import {countObjectProperties} from '@/utils'
