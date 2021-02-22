@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <form @submit.prevent="save">
+    <form @submit.prevent="savePost">
       <div class="form-group">
         <textarea
           name=""
@@ -15,30 +14,58 @@
         <button class="btn-blue">Submit Post</button>
       </div>
     </form>
-  </div>
 </template>
 <script>
 export default {
   props: {
     threadId: {
-      required: true
+      required: false
+    },
+    post: {
+      type: Object
     }
   },
+
   data () {
     return {
-      text: ''
+      text: this.post ? this.post.text : ''
     }
   },
+
+  computed: {
+    isUpdate () {
+      return !!this.post
+    }
+  },
+
   methods: {
-    save () {
+    savePost () {
+      this.persist()
+      .then(post => {
+        this.$emit('save-post', {post})
+      })
+    },
+
+    createPost () {
       const post = {
         text: this.text,
         threadId: this.threadId
       }
       this.text = ''
 
-      this.$emit('save-post', {post})
-      this.$store.dispatch('createPost', post)
+      return this.$store.dispatch('createPost', post)
+    },
+
+    updatePost () {
+      const payload = {
+        id: this.post['.key'],
+        text: this.text
+      }
+      return this.$store.dispatch('updatePost', payload)
+    },
+
+    persist () {
+      return this.isUpdate ? this.updatePost() : this.createPost()
     }
   }
 }

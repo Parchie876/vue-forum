@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="post">
       <div class="user-info">
         <a href="#" class="user-name">{{ user.name }}</a>
@@ -14,8 +13,14 @@
       </div> 
 
       <div class="post-content">
-        <div>
+        <div v-if="!editing">
           {{ post.text }}
+        </div>
+        <div v-else>
+          <PostEditor 
+            :post="post"
+            @save-post="editing = false"
+          />
         </div>
       </div>
       <div class="post-date text-faded"
@@ -23,11 +28,11 @@
       <AppDate :timestamp="post.publishedAt"/>
       </div>
     </div>
-  </div>
 </template>
 <script>
 
 import {countObjectProperties} from '@/utils'
+import PostEditor from '@/components/PostEditor'
 export default {
   props: {
     post: {
@@ -35,6 +40,17 @@ export default {
       type: Object
     }
   },
+
+  components: {
+    PostEditor
+  },
+
+  data () {
+    return {
+      editing: false
+    }
+  },
+
   computed: {
     user () {
       return this.$store.state.users[this.post.userId]
