@@ -1,7 +1,5 @@
 <template>
-    <div>
         <span :title="timestamp | readableDate">{{ timestamp | dateDifference}}</span>       
-    </div>
 </template>
 <script>
 import moment from 'moment'

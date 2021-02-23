@@ -31,6 +31,7 @@
           <PostEditor 
             :post="post"
             @save-post="editing = false"
+            @cancel="editing = false"
           />
         </div>
       </div>

@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="flex-grid">
       <UserProfileCard 
         v-if="!edit"
@@ -24,7 +23,6 @@
         <PostList :posts="userPosts" />
       </div>
     </div>
-  </div>
 </template>
  <script>
 import PostList from '@/components/PostList'
