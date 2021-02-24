@@ -18,8 +18,8 @@
         <span class="online">{{ user.username }} is online</span>
 
         <div class="stats">
-          <span>{{ userPostsCount }} posts</span>
-          <span>{{ userThreadsCount }} threads</span>
+          <span>{{ userPostsCount }} {{userPostsCount > 1 ? "Posts" : "Post"}}</span>
+          <span>{{ userThreadsCount }} {{userThreadsCount > 1 ? "Threads" : "Thread"}}</span>
         </div>
 
         <hr />
@@ -47,14 +47,16 @@ export default {
     user: {
       required: true,
       type: Object
+    }
+  },
+
+  computed: {
+    userThreadsCount () {
+      return this.$store.getters.userThreadsCount(this.user['.key'])
     },
-    userPostsCount: {
-      required: true,
-      type: Number
-    },
-    userThreadsCount: {
-      required: true,
-      type: Number
+
+    userPostsCount () {
+      return this.$store.getters.userPostsCount(this.user['.key'])
     }
   }
 }

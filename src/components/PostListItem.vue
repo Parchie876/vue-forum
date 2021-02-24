@@ -9,7 +9,7 @@
             alt="avatar"
           />
         </a>
-        <p class="desktop-only text-small">{{userPostsCount}}</p>
+        <p class="desktop-only text-small">{{userPostsCount}} {{userPostsCount > 1 ? 'Posts' : "Post"}}</p>
       </div> 
 
       <div class="post-content">
@@ -43,7 +43,6 @@
 </template>
 <script>
 
-import {countObjectProperties} from '@/utils'
 import PostEditor from '@/components/PostEditor'
 export default {
   props: {
@@ -68,7 +67,7 @@ export default {
       return this.$store.state.users[this.post.userId]
     },
     userPostsCount () {
-      return countObjectProperties(this.user.posts)
+      return this.$store.getters.userPostsCount(this.post.userId)
     }
   }
 
