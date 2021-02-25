@@ -10,7 +10,7 @@
       </div>
 
       <div class="activity">
-        <p class="replies-count">{{ repliedCount }}</p>
+        <p class="replies-count">{{ repliesCount }}</p>
 
         <!-- <img
           class="avatar-medium"
@@ -28,7 +28,6 @@
     </div>
 </template>
 <script>
-import {countObjectProperties} from '@/utils'
 export default {
   props: {
     thread: {
@@ -37,8 +36,8 @@ export default {
     }
   },
   computed: {
-    repliedCount () {
-      return countObjectProperties(this.thread.posts) - 1
+    repliesCount () {
+      return this.$store.getters.threadRepliesCount(this.thread['.key'])
     },
     user () {
       return this.$store.state.users[this.thread.userId]

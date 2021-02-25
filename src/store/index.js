@@ -24,6 +24,12 @@ export default new Vuex.Store({
       return (id) => {
         return countObjectProperties(state.users[id].thread)
       }
+    },
+
+    threadRepliesCount (state) {
+      return (id) => {
+        return countObjectProperties(state.threads[id].posts) - 1
+      }
     }
   },
 
