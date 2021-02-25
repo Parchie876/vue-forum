@@ -1,3 +1,4 @@
+import Vue from 'vue'
 
 const countObjectProperties = obj => {
   if (typeof obj === 'object') {
@@ -5,7 +6,16 @@ const countObjectProperties = obj => {
   }
   return 0
 }
+const makeAppendChildToParentMutation = ({parent, child}) =>
+  (state, {childId, parentId}) => {
+    const resource = state[parent][parentId]
+    if (!resource[child]) {
+      Vue.set(resource, child, {})
+    }
+    Vue.set(resource[child], childId, childId)
+  }
 
 export {
-    countObjectProperties
+    countObjectProperties,
+    makeAppendChildToParentMutation
 }
