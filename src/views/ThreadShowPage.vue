@@ -9,7 +9,7 @@
         Edit Thread
         </router-link>
       </h1>
-          <p>By <a href="#" class="link-unstyled">Robin</a>, <AppDate :timestamp="thread.publishedAt"/>.
+          <p>By <a href="#" class="link-unstyled">{{user.name}}</a>, <AppDate :timestamp="thread.publishedAt"/>.
               <span 
               style="float:right; margin-top: 2px;"
               class="hide-mobile text-faded text-small"
@@ -51,6 +51,10 @@ export default {
       const userIds = replies.map(post => post.userId)
 
       return userIds.filter((item, index) => index === userIds.indexOf(item)).length
+    },
+
+    user () {
+      return this.$store.state.users[this.thread.userId]
     },
 
     repliesCount () {
